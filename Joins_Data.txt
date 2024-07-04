@@ -1,0 +1,27 @@
+CREATE TABLE Users
+(
+ID Number (5),
+Name Varchar2 (15)
+);
+
+INSERT INTO Users (ID, Name) Values (1,'Saif');
+INSERT INTO Users (ID, Name) Values (2,'Amik');
+INSERT INTO Users (ID, Name) Values (3,'Pankaj');
+INSERT INTO Users (ID, Name) Values (4,'Neeraj');
+INSERT INTO Users (ID, Name) Values (5,'Samadhan');
+
+CREATE TABLE Orders
+(
+Sr_No Number (5),
+User_Id Number (5),
+Item Varchar2 (15)
+);
+
+INSERT INTO Orders (Sr_No, User_Id, Item) Values (1,2,'Pizza');
+INSERT INTO Orders (Sr_No, User_Id, Item) Values (2,2,'Burger');
+INSERT INTO Orders (Sr_No, User_Id, Item) Values (3,2,'Milk Shake');
+INSERT INTO Orders (Sr_No, User_Id, Item) Values (4,3,'French Fries');
+INSERT INTO Orders (Sr_No, User_Id, Item) Values (5,3,'Burger');
+INSERT INTO Orders (Sr_No, User_Id, Item) Values (6,5,'Diet Coke');
+INSERT INTO Orders (Sr_No, User_Id, Item) Values (7,5,'Burger');
+INSERT INTO Orders (Sr_No, User_Id, Item) Values (8,99,'Burger');
