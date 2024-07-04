@@ -1,0 +1,14 @@
+select 
+	a.empno as emp_id,
+	a.ename as emp_name,
+	b.empno as mgr_id,
+	b.ename as mgr_name,
+	c.emp_cnt as mgr_team_cnt
+from emp a, emp b,
+    (select a.mgr, count(a.ename) as emp_cnt
+    from emp a, emp b
+    where a.mgr = b.empno
+    group by a.mgr) c
+where a.mgr = b.empno
+and b.empno = c.mgr
+order by b.empno;
