@@ -1,0 +1,36 @@
+cd --> change a directory
+pwd --> present working directory
+/home/hduser/
+mkdir --> create a directory
+rmdir --> removes a directory (Directory should be empty)
+chmod --> change permissions of files/directories
+r --> 4
+w --> 2
+x --> 1
+cat --> creates files, append the data to file, open/view the file.
+echo $? --> this command tells us if my previous command is successful or not.
+touch --> create empty files
+cp --> copy a file
+head/tail --> first/last 10 lines
+vi --> create files, modify the files
+:wq --> save & quit
+:q --> quit without saving
+date --> display today's date --> %Y-%M-D
+cd .. --> to move one level up
+cd .  --> it means the current directory
+cd ~ --> it takes to users home directory
+ls --> list all the files & directores in the working directory
+ifconfig --> displays ip address
+ls -a --> it will display all hidden files/directories
+wc --> we can find word count of a given file in lines, words, characters
+clear --> to clear the screen
+mv --> move/rename the files
+rm --> removing a file
+history --> display all commands executed
+ping google.com --> internet connectivity
+man <command> --> it gives the help of the command
+grep --> It searches a patten from a given file/files.
+sed
+awk
+find
+zip/unzip

@@ -1,0 +1,54 @@
+Pip:
+a) Pip is a tool for intalling python libraries.
+b) With pip you can search, download/install, upgrade packages in python from Pyhon Package Index.
+
+Update Current Repository:
+sudo apt update
+
+sudo apt install python3-pip
+
+To list all pip commands:
+pip3 --help
+
+pip3 install --help
+
+Install Scrapy:
+pip3 install scrapy
+pip3 uninstall scrapy
+pip3 install scrapy==1.5
+
+Solution_1:
+
+import pandas as pd
+import numyp as np
+
+ratings_df = pd.read_csv('/home/hduser/LFS/datasets/ratings.csv')
+ratings_df.head()
+
+grpDf = ratings_df.groupby(['rating']).agg(TotalRating=('userId','count'))
+grpDf.head()
+
+ERROR:
+TypeError: aggregate() missing 1 required positional argument: 'arg'
+
+Reason: If you are getting this error because your pandas version is older than 0.25 
+==> print(pd.__version__)
+
+Other Approach:
+grpDf = ratings_df.groupby('rating')['userId'].agg([('userId','count')])
+srtDf = grpDf.sort_values(by=['rating'], ascending=False)
+srtDf.head()
+
+Solution 2:
+sol2 = ratings_df.groupby(['movieId']).agg(Sum_Rating=('rating','sum'),
+                                          Count_Rating=('rating','count'))
+sol2.head()
+
+Solution 3:
+sol3 = ratings_df.groupby(['movieId']).agg(Avg_Rating=('rating','mean'))
+sol3.head()
+
+Solution 4:
+sol4 = ratings_df.groupby(['movieId']).agg(Avg_Rating=('rating','mean'))
+sol4SrtDf = sol4.sort_values(by=['Avg_Rating'], ascending = False).reset_index()
+sol4SrtDf.head()

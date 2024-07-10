@@ -1,0 +1,124 @@
+************************************************Git - GitHub***************************************************
+What is Version Control System?
+a) VCS is a management software i.e. responsible for managing the changes to programs/codes, documents etc.
+b) Easy to recover them, rollback to previous changes.
+
+Types of VCS?
+
+1) Local VCS:
+a) Changes are stored in a DB along with timestamp.
+b) Code is in local system.
+
+2) Centralized VCS?
+a) A directory/folder where your project codes resides at  a remote location on a server.
+b) It contains one repository i.e. central repository and each user gets connected to it.
+
+3) Distributed VCS?
+a) Distributed VCS contains multiple repositories.
+b) Each user has their own local repository & there is a central repository where the final code resides.
+***************************************************************************************************************
+What is Git?
+a) Git is a free open source DVCS.
+b) Git help developers to keep a track or history of codes, files, documents, applications, websites by storing them in a different version on its own server i.e. GitHub.
+c) Git stores snapshot of your project (NOT Difference).
+
+What is GitHub?
+a) GitHub is a cloud based hosting service that help developers to store and manage codes also keep a track of changes to the codes in Git repository.
+b) GitHub is platform where developers collabaritively keep the codes.
+
+		Git			GitHub
+1) Git is a tool to execute version control.		GitHub is a platform which utilizes Git to carry out its
+					functionalities.
+2) Git is a s/w and we have to install if we		It is web based hosting service where we need to create
+      want to use it.				our accounts.
+3) CLI --> Command Line Interface		GUI --> Graphical User Interface
+
+Git Lifecycle:
+
+Unix Commands:
+pwd	==> present working directory
+mkdir	==> It creates directory
+cd	==> change a directory
+cd ..	==> move one level up
+cd ../../..	==> 3 level up
+cd .	==> Current Directory
+nano, vi, vim ==> text editors
+clear (Ctrl + l)==> screen clear
+cat	==> This command helps us to create file, append data to file & open the file.
+cp	==> copies a file
+mv	==> move/rename a file
+echo $?	==> previous command is suceesful or not.
+touch	==> It creates empty file.
+ls	==> It list the files & directories in the current working directory
+head	==> It displays first 10 rows
+tail	==> It displays last 10 rows
+
+ls -ltr test.txt
+-rw-r--r-- 1 Saif 197121 81 Jul  1 17:44 test.txt
+- indicates a file
+drwxr-xr-x 1 Saif 197121  0 Jul  1 17:34 d1/
+d indicates a directory
+
+rw-	==> Users
+r--	==> Group
+r--	==> Others
+
+Permissions: Allowed or Denied to Access those files or directories.
+	Octal	Character
+Read	4	r
+Write	2	w
+Execute	1	x
+
+Add ==> +
+Remove ==> -
+Assign ==> =
+
+chmod:
+chmod u+x test.txt
+chmod u-x test.txt
+
+chmod 764 test.txt
+chmod 664 test.txt
+
+chmod u+x,o+x test.txt
+chmod 765 test.txt
+
+chmod o=w test.txt
+
+Git Commands:
+git status	==> This command will show the modified status of the file(Tracked/Untracked)
+git init	==> It initializes the working directory. It assigs a master branch & .git folder is created.
+git add	==> This will add the files in the staging area where they are being tracked by Git & ready to 	          commit.
+git commit ==> This command records files changes permanently & saved in Local Repository.
+git log	==> This command will show all the logs for the file.
+git dif	==> This command will show you what exactly has changed in the file.
+git commit -a -m ==> With -a we can skip the staging area.
+	Note: 
+	a) It cannot be performed on new files
+	b) There has to be one commit before.
+git ignore	==> We do not track all files. If we want to ignore then this command is used.
+git restore --staged <FN> ==> If you want to unstage a file for some changes.
+alias 	==> Giving short names to long commands.
+git config --global alias.st status
+git config --global --unset alias.st
+
+What is Branching:
+a) A branch in Git is a lightweight pointer to the the commits.
+b) Default Branch is master.
+c) Branching is diverging from the main branch.
+
+git branch <Branch_Name>	==> Command to create a branch
+git branch			==> Command to see all branch
+
+git + github connection:
+git remote add origin <url>
+
+ERROR: fatal: invalid refspec 'https://github.com/ArifShaikh123890/deljul24.git'
+git pull origin master --allow-unrelated-histories
+Staged It
+Committed It
+
+git push origin master
+
+git pull ==> it pulls the codebase/files from server repo/github to local repo/git
+pull ==> fetch + merge

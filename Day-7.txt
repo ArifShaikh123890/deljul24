@@ -1,0 +1,104 @@
+Bigdata?
+Types of Data?
+Challenges?
+Solution?
+DFS?
+Hadoop 1.x Architecture?
+
+What is Bigdata?
+a) Lots of Data --> TB & PB
+b) It is a term for collection of data i.e. so large & complex that it becomes difficult to process using ur existing traditional system.
+
+Challenges?
+1) How to Store Large Amount of Data?	===> HDFS
+2) How to Process this Large Amount of Data? ===> MapReduce
+
+Giant?
+=> Google
+Google was able store large amount of data efficiently & process this large amount of data efficiently also.
+
+Published Whitepapers:
+Storage		GFS		HDFS
+Processing	MapReduce	MapReduce
+
+Doug Cutting along with Mike Caferella
+
+DFS ==> Distributed File System
+Storage --> DFS --> HDFS --> Hadoop Distributed File System
+Processing --> MapReduce --> MapReduce
+
+Hadoop ==> Storage & Processing.
+Hadoop is an open source framework which stores the large amount data in a distributed manner i.e HDFS & it process that large amount of distributed data in parallel using MapReduce on cluster of commodity computers using a programming model.
+
+Types of Data?
+Structure: Rows & Columns, DB, Excel, CSV, DF
+Semi-Structure: Json, XML, Email body
+Un-Structure: Logs, Videos, Images etc...
+
+5 Vs?
+Variety: Structure, Semi-Structure, Un-Structure
+Volume: Size of Data i.e. MB, GB, TB, PB
+Velocity: Speed at which the data is generated/processed
+Veracity: Consistent, Reliable
+id	name	city
+101	saif	pune
+	102	mayank
+areeba	ap	103
+null	null	vansh
+Value: Value out of it.
+
+Local: Unix --> Ubuntu
+/home/hduser/
+
+LFS --> datasets
+
+Hadoop:
+hdfs dfs -ls /user/hduser/
+
+Data in Local:
+/home/hduser/LFS/datasets/
+
+Host-Only Adapter ==> ip in VM
+NAT ==> Internet in VM
+
+Hadoop Commands:
+1) pwd:
+/home/hduser/
+==> hdfs dfs -ls /user/hduser/
+
+2) echo $? ==> Previous command is successful or not.
+
+3) mkdir LFS
+==> hadoop fs -mkdir /user/hduser/HFS/
+hdfs dfs -mkdir /user/hduser/HFS/
+hdfs dfs -mkdir /user/hduser/HFS/datasets/
+hdfs dfs -mkdir /user/hduser/HFS/datasets/Input
+hdfs dfs -mkdir /user/hduser/HFS/datasets/Output
+
+4) Local data Path:
+/home/hduser/LFS/datasets
+Hadoop Data Path:
+/user/hduser/HFS/datasets/
+
+5) -copyFromLocal/-put:
+copies a file from <src> <tgt>
+hdfs dfs -copyFromLocal /home/hduser/LFS/datasets/file1.txt /user/hduser/HFS/datasets/Input/
+
+hdfs dfs -ls /user/hduser/HFS/datasets/Input/
+
+6) cat ==> to view the data
+hdfs dfs -cat /user/hduser/HFS/datasets/Input/file1.txt
+
+7) cp /home/hduser/LFS/datasets/file1.txt /home/hduser/LFS/datasets/file2.txt
+ls -ltr file*
+hdfs dfs -put /home/hduser/LFS/datasets/file2.txt /user/hduser/HFS/datasets/Input/
+
+8) -copyToLocal/-get:
+hdfs dfs -copyToLocal /user/hduser/HFS/datasets/Input/file1.txt /home/hduser/LFS/datasets/
+
+9) -cp:
+hdfs dfs -cp /user/hduser/HFS/datasets/Input/file1.txt /user/hduser/HFS/datasets/Output/
+
+10) -mv 
+hdfs dfs -mv /user/hduser/HFS/datasets/Input/file2.txt /user/hduser/HFS/datasets/Output/
+

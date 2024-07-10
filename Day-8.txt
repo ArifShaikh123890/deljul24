@@ -1,0 +1,104 @@
+1) touchz: It creates a zero byte file.
+hdfs dfs -touchz /user/hduser/HFS/datasets/Input/empty_file.txt
+
+2) appendToFile:
+If the file is not available it creates a new file else it appends the data to existing file.
+hdfs dfs -appendToFile /home/hduser/LFS/datasets/file1.txt /user/hduser/HFS/datasets/Input/
+hdfs dfs -appendToFile /home/hduser/LFS/datasets/file1.txt /user/hduser/HFS/datasets/Input/empty_file1.txt
+
+3) rm: removes a file
+hdfs dfs -rm /user/hduser/HFS/datasets/Input/empty_file1.txt
+
+4) Disk Usage/Disk Free:
+hdfs dfs -du -h /user/hduser/HFS/datasets
+hdfs dfs -df -h /user/hduser/HFS/datasets
+
+5) help:
+hdfs dfs -help du
+
+6) -moveFromLocal: It cuts the file from local & paste it to hadoop.
+hdfs dfs -moveFromLocal derby.log /user/hduser/HFS/datasets/Input/
+
+7) chmod: changing the permission
+hdfs dfs -chmod u+x /user/hduser/HFS/datasets/Input/empty_file.txt
+r	--> 4
+w	--> 2
+x	--> 1
+
+8) -test:
+hdfs dfs -test -f /user/hduser/HFS/datasets/Input/emp*
+echo $?
+hdfs dfs -test -d /user/hduser/HFS/datasets/Input/emp*
+echo $?
+
+9) gzip/gunzip:
+gzip file1.txt
+gunzip file1.txt.gz
+zcat file1.txt.gz
+
+hdfs dfs -copyFromLocal file1.txt.gz /user/hduser/HFS/datasets/Input/
+hdfs dfs -text /user/hduser/HFS/datasets/Input/file1.txt.gz
+
+Hive:
+a) Hive is a data summarization/analysis tool which is used for querying large datasets residing in Hadoop.
+b) Hive is NOT a DB.
+c) With hive we can write queries call hql & internally they get converted to MapReduce Program.
+d) Hive can only process structure & semi-structure data.
+
+2 Types of table in Hive:
+1) Managed Table
+2) External Table
+
+1) Managed Table:
+a) Managed Tables are created by default and they are also called as Internal Tables.
+b) If you drop Managed Tables, data & table gets deleted.
+
+Set DB which are using:
+set hive.cli.print.current.db=true;
+
+create table mgd_emp
+(
+id int, name string, sal int
+)
+row format delimited fields terminated by ','
+lines terminated by '\n'
+stored as textfile
+tblproperties('skip.header.line.count'='1');
+
+desc mgd_emp;
+
+Default Location of Hive:
+/user/hive/warehouse
+
+==> db
+==> tbl
+
+/user/hive/warehouse/db/tbl
+
+Local to Hive:
+load data local inpath '/home/hduser/LFS/datasets/emp.txt' into table mgd_emp;
+
+select * from mgd_emp;
+
+/user/hive/warehouse/db/tbl/emp.txt
+
+describe formatted mgd_emp;
+
+drop table mgd_emp;
+hdfs dfs -ls /user/hive/warehouse/arif_db.db/
+
+2) External Table:
+a) External Tables are NOT created by default. We need to use external keyword while creating tables.
+b) If you drop External Tables, table gets deleted BUT data does not gets deleted.
+
+create external table ext_emp
+(
+id int, name string, sal int
+)
+row format delimited fields terminated by ','
+tblproperties('skip.header.line.count'='1');
+
+hdfs dfs -copyFromLocal /home/hduser/LFS/datasets/emp.txt /user/hduser/HFS/datasets/Input/
+
+Hadoop to Hive:
+load data inpath '/user/hduser/HFS/datasets/Input/emp.txt' into table ext_emp;

@@ -1,0 +1,206 @@
+Lambda/Anonymous Functions:
+a) We don't have names for anonymous functions.
+b) We call anonymously inside another functions they are called higher order functions.
+
+def table(n):
+    return lambda a: a * n
+
+n = int(input("Enter the number: "))
+b = table(n)
+print(type(b))
+
+for i in range(1,11):
+    print(n, "X", i, "=",b(i))
+
+E.g. map, reduce, filter
+
+Higher Order Functions:
+1) A function can take one or more functions as argument.
+2) A function can be returned as a result of another function.
+
+# 1) A function can take one or more functions as argument.
+def summation(nums):
+    return sum(nums)
+
+def main(f, *args):          # Function as an argument
+    result = f(*args)
+    print(result)
+
+# 2) A function can be returned as a result of another function.
+def add_two_nos(x,y):
+    return x+y
+
+def add_three_nos(x,y,z):
+    return x+y+z
+
+def main(num_len):
+    if num_len == 3:
+        return add_three_nos
+    else:
+        return add_two_nos
+
+args = [5,10]
+num_len = len(args)
+res_func = main(num_len)
+print(res_func(*args))
+
+map, reduce, filter:
+
+1) map:
+Map applies a function to all the elements in an input list.
+map(func, list_of_elem)
+
+# map:
+ele = [4,1,5,2,6]
+sq = list(map(lambda x: x**2, ele))
+print(sq)
+
+2) reduce:
+It applies a rolling computation to sequential pair of values in a list.
+
+# reduce:
+from functools import reduce
+prd = reduce(lambda x,y: x * y, [4,1,5])
+print(prd)
+
+3) filter:
+It restricts elements from the given input.
+
+# filter:
+no_list = range(-5, 5)
+ls_zero = list(filter(lambda x: x < 0, no_list))
+print(ls_zero)
+
+List Comprehension:
+a) List Comprehension is an elegant way to write a code.
+b) It contains expression followed for clause.
+c) It is efficient in coding space & time.
+
+[ expression for loop if conditions]
+
+Python Date & Time:
+time
+datetime
+
+import datetime
+dt = datetime.datetime.now()
+print(dt)
+
+from datetime import date
+td_dt = date.today()
+print(td_dt)
+
+print(dir(datetime.datetime))
+
+curr_dt = date.fromtimestamp(1719909460)
+print(curr_dt)
+
+# strftime: This method creates a string from a given date, datetime object.
+from datetime import datetime
+curr_time = datetime.now()
+print(curr_time)
+fmt_dt1 = curr_time.strftime("%d/%m/%Y")
+print(fmt_dt1)
+type(fmt_dt1)
+
+# strptime: This method creates a datetime object from a given string.
+str1 = '02 July, 2024'
+# 2024-07-02
+dt1 = datetime.strptime(str1, '%d %B, %Y')
+print(dt1)
+dt2 = dt1.strftime('%Y-%m-%d')
+print(dt2)
+
+Logging:
+Logging is a way of tracking events that happened during the code execution.
+If you don't have logging & your code fails then you will have to spend a lot of time in debugging.
+
+Debugging Level:
+		Level		Numeric Value
+		NOTSET		0
+		DEBUG		10
+		INFO		20
+		WARNING		30
+		ERROR		40
+		CRITICAL		50
+
+Logger.info('My Code started Running')
+
+Default: Warning --> 30
+
+# Add time formats to the logs
+import logging
+
+# Create & Configure logger
+log_format = '%(asctime)s - %(levelname)s - %(message)s'
+logging.basicConfig(filename='/home/hduser/LFS/logs/deljul.log',
+                   format=log_format,
+                   filemode='w')
+logger = logging.getLogger()
+
+# Set the Level:
+logger.setLevel(logging.DEBUG)
+
+# Test the Logger with Info Msg
+logger.info('This is my first info msg')
+
+print(logger.level)
+
+Exception Handling:
+a) Python has built-in exception which forces your program to output an error when something goes wrong in your code/program.
+b) When these exception occurs it causes the current process to stop.
+
+try:
+	# Runs First
+	<Code>
+except
+	# Runs if exceptions occurs in try block
+	<Code>
+else:
+	# Runs if try block is succeeded
+	<Code>
+finally:
+	# This code will alway run
+	<Code>
+
+# Scneario:
+Write a Function which reads a file & measure the time required to read a file?
+==> Logging
+==> Exception Handling
+
+***Code***
+import logging
+import time
+from datetime import datetime
+
+log_format = '%(asctime)s - %(levelname)s - %(message)s'
+logging.basicConfig(filename="/home/hduser/LFS/logs/read_time_" +
+                    datetime.now().strftime('%Y-%m-%d %H-%M-%S') + ".log",
+                   format=log_format)
+logger = logging.getLogger()
+
+logger.setLevel(logging.DEBUG)
+
+def read_file(path):
+    start_time = time.time()
+    try:
+        f = open(path, mode = 'r')
+        data = f.read()
+        return data
+    except FileNotFoundError as e:
+        logger.error(e)
+    else:
+        f.close()
+    finally:
+        stop_time = time.time()
+        rd_tm = stop_time - start_time
+        logger.info("Time taken to read {file} = {time}".format(file=path, time=rd_tm))
+        #logger.info("Time taken to read {} = {}".format(path, rd_tm))
+txndata = read_file('/home/hduser/LFS/datasets/us_txns11')
+***************************************************************************************************************
+Unix Commands:
+wc: 
+This command helps us to find line, word & character count.
+
+date:
+date +%Y-%m-%d
