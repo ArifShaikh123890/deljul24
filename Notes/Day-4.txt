@@ -1,0 +1,231 @@
+Joins:
+If we want to fetch data from two or more tables we need to join them.
+Inner, Left, Right, Full, Self, Cross
+
+Inner Join:
+Returns Data/Rows which are matching the condition in joins. 
+Rest data/rows are discarded.
+
+Left Outer Join:
+Returns all the rows/data from the left table.
+Rows which are not meeting the condition those rows data is taken from left table as it is BUT for those rows from right table the columns values/data will be displayed as NULL.
+
+Right Outer Join:
+Returns all the rows/data from the right table.
+Rows which are not meeting the condition those rows data is taken from right table as it is BUT for those rows from left table the columns values/data will be displayed as NULL.
+
+Full Outer Join:
+Return data from both the tables based on Joining Condition.
+Also if the condition is not matching it will fetch data and for the corr table it will display NULL Values.
+
+		Table 1		Table 2
+		Col 1		Col 1
+		1		1
+		2		2
+		2		2	
+		3		3
+		3		3
+		3		3
+		4		5
+
+Inner Join: 14 
+Left Outer Join: 15
+Right Outer Join: 15
+Full Outer Join: 16
+
+Self Join:
+Self Join is a join where it uses the same table to apply a join.
+
+select 
+	a.empno as emp_id,
+	a.ename as emp_name,
+	b.empno as mgr_id,
+	b.ename as mgr_name,
+	c.emp_cnt as mgr_team_cnt
+from emp a, emp b,
+    (select a.mgr, count(a.ename) as emp_cnt
+    from emp a, emp b
+    where a.mgr = b.empno
+    group by a.mgr) c
+where a.mgr = b.empno
+and b.empno = c.mgr
+order by b.empno;
+
+Case Statement:
+Case Statement it has functionality of in if-then-else statement.
+
+case <exp>
+    when <condn> then <result>
+    when <condn> then <result>
+    when <condn> then <result>
+else <result>
+end
+
+select empno, ename, deptno,
+  case deptno
+    when 10 then 'account'
+    when 20 then 'research'
+    when 30 then 'sales'
+    when 40 then 'operations'
+  else 'no dept'
+end as dept_name
+from emp;
+
+select empno, ename, sal, deptno,
+case
+when sal <= 3000 then 'Salary Needs a Raise'
+when empno=7566 and ename='JONES' then 'Emp Is Available'
+when deptno in (10, 20) then 'HR Teams'
+else 'NA'
+end as new_col
+from emp;
+
+Decode(exp, search, result, [search, result], default)
+
+
+		Case			Decode
+1)	Case is a statment			Decode is a function
+2)	Case can be used both in 		Decode can use only in sql statment
+	sql & pl-sql
+3) 	Case executes faster			Decode executes slower
+4) 	Case expects data type consistency	Decode does not expects data type consistency
+
+NVL:
+select deptno, comm, sal, nvl(comm, 0) as new_comm, 
+nvl(sal, 0) + nvl(comm, 0) as total_sal
+from emp 
+where deptno in (10, 30) order by deptno;
+
+Coalesce:
+It displays first NOT NULL Value
+coalesce(col,value,def_val)
+
+select Sal1, Sal2, SAL3, coalesce(Sal1,Sal2,SAL3,'0') as Coa_op
+from
+(Select '' as Sal1, '' as Sal2, '' as Sal3 from dual);
+
+Ltrim/Rtrim/trim
+select length(trim(initcap(C1))) as C1, length(trim(initcap(c2))) as C2 from
+(select 'SAIF' as C1, ' Saif' as C2 from dual);
+
+Instr:  Instr returns the position of character.
+select substr(Col1,11) as sub, instr(Col1, 'i', 1, 2) as ins from
+(select 'Saif Arif Shaikh' as Col1 from dual);
+
+Substr: Subtr returns the required character.
+select substr(Col1,11) from
+(select 'Saif Arif Shaikh' as Col1 from dual);
+
+String:
+Arif Mohd Shaikh
+Mayank Yadav
+
+String:		FName	MName	LName
+Arif Mohd Shaikh	Arif	Mohd	Shaikh
+Mayank Yadav	Mayank		Yadav
+
+SELECT  
+        to_char(
+        to_date('2024-07-04', 'YYYY-MM-DD'),
+        'DD-MON-YYYY')as dt
+FROM DUAL;
+
+SELECT  LAST_DAY(SYSDATE) as LD,
+        TRUNC(SYSDATE,'MM') as FD,
+        TRUNC(SYSDATE,'Q') as FD,
+        to_char(
+        to_date('2024-07-04', 'YYYY-MM-DD'),
+        'DD-MON-YYYY')as dt
+FROM DUAL;
+
+SELECT ROWNUM, MOD(ROWNUM,4) AS MD_VL1,
+                MOD(ROWNUM+1,4) AS MD_VL2,
+                MOD(ROWNUM+2,4) AS MD_VL3,
+                MOD(ROWNUM+3,4) AS MD_VL4
+FROM DUAL;
+
+Analytical Functions:
+ROW_NUMBER(): It generates a incremented sequence nos.
+row_number() over(partition|order by)
+SELECT E.*,
+        row_number() over(order by empno) as rno,
+        row_number() over(partition by deptno order by empno) as prno
+from emp e
+order by deptno;
+
+RANK(): 
+In Rank Sequnces are skipped.
+It gives a incremented sequence number but if the values are repeated sequence is repeated and no of repeated sequence are skipped for the next value.
+Sal	RNO	RK
+1500	1	1
+2000	2	2
+3000	3	3
+3000	4	3
+3000	5	3
+3000	6	3
+5000	7	7
+
+select * from
+(SELECT EMP.*, 
+row_number() over(order by empno) as rno,
+RANK() over(order by SAL) as rnk
+FROM EMP
+where sal = 1250)
+where rno = 3;
+
+DENSE_RANK(): It gives an incremented sequence based on column BUT it does not skip sequence.
+Sal	RNO	RK	DR
+1500	1	1	1
+2000	2	2	2
+3000	3	3	3
+3000	4	3	3
+3000	5	3	3
+3000	6	3	3
+5000	7	7	4
+
+SELECT EMP.*, 
+RANK() over(order by SAL) as rnk,
+dense_rank() over(order by sal) as drnk
+FROM EMP;
+
+LEAD(): It gives me the next row value. Default is 1. But you can change this nos. And if it does not have next row it gives NULL. You can pass a default so that it does not show NULL.
+Sal	Nx_Row
+1000	2000
+2000	3000
+3000	4000
+4000	0
+
+SELECT EMP.*, 
+lead(sal, 1, 0) over(order by sal) as Nx_Rw_Sal
+FROM EMP
+where rownum < 6;
+
+LAG(): It gives me the previous row value. Default is 1. But you can change this nos. And if it does not have previous row it gives NULL. You can pass a default so that it does not show NULL.
+SELECT EMP.*, 
+lead(sal, 1, 0) over(order by sal) as Nx_Rw_Sal,
+lag(sal, 1, 0) over(order by sal) as Prev_Rw_Sal
+FROM EMP
+where rownum < 6;
+
+NTILE(): It creates equal no of buckets.
+Ntile(2)	Nitle(4)	Ntile(3)
+Col	Op2	Op4	Op3
+101	1	1	1
+Saif	1	1	1
+Dev	1	2	1
+1000	1	2	2
+102	2	3	2
+Divy	2	3	2
+Sr Dev	2	4	3
+2000	2	4	3
+
+EmpId	Name	Designation	Sal
+101	Saif	Dev		1000
+102	Divy	Sr Dev		2000
+
+SELECT EMP.*, 
+ntile(3) over(order by empno) as NT3,
+ntile(4) over(order by empno) as NT4
+from emp;
+
+ISNULL/NOT ISNULL:

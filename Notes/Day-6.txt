@@ -1,0 +1,120 @@
+Data Visualization:
+Grpahical Representation of Data.
+
+What is BI?
+a) BI stands for Business Intellience.
+b) It is a data driven tool i.e. DSS --> Decision Support System which helps us to analyze the data & take some action.
+
+Power BI:
+a) It is software/tool which is given by Microsoft.
+b) It is a Data Visualization tool that converts data from different sources to interactive dashboards.
+c) Power BI Desktop --> for creating the reports.
+d) Power BI Service --> It is a SaaS (Software as  a Service) which is used to publish the reports.
+
+Three Layers:
+1) Data Integration
+2) Data Processing
+3) Data Presentation
+
+Filename: Superstore.xls
+
+1) Column Chart:
+==> Find out Sales by Sub-Category?
+
+2) Stacked Column Chart:
+==> Find out Sales of Sub-Category by Segment
+
+3) Pie Chart:
+==> Find out Sales by Region?
+Note:
+As a best practice we keep values in this chart which are equal to or less than 5 distinct values.
+
+4) Donut Chart:
+Similar to Pie...Just Duplicate & change Visual to Donut.
+
+5) Funnel Chart:
+==> Find out Sub-Category by Sales?
+
+6) Line Chart:
+==> Find out Sales by Order Date & Segment?
+Note:
+Line Chart can be created mostly for Date Column Data so that we can see the progress over the time.
+
+7) Area Chart:
+Similar to Line...Just Duplicate & change Visual to Area.
+
+8) Combo Chart (Line & Stacked)
+==> Find out Profit & Discount by Order Date and Segment
+
+9) Scatter or Scatter Plot Chart:
+==> Find out distribution of Sales & Profit by Sub-Category?
+Note:
+This is the only Animation Chart by default.
+Distribution will be always done on numerical values.
+Two Numerical Columns are required.
+
+10) Cards & Slicers:
+==> Find out Highest Sales, Profit, Quantity by Sub-Category?
+Highest Profit: Copiers
+Highest Sales: Phones
+Highest Quantity: Binders
+
+Conditional Formatting:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
