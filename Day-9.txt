@@ -1,0 +1,155 @@
+-appendToFile
+-touchz
+-rm
+gzip/gunzip --> unix
+-du/-df
+-moveFromLocal
+-help
+-chmod
+-text
+-cp/-mv
+
+Hive:
+
+Default DB when Hive is Installed?
+Derby
+
+Default Location of Hive where data is stored?
+/user/hive/warehouse/
+
+I want to see whether its a managed or external table?
+describe formatted <table_name>
+
+Managed/External Table:
+
+Local to Hive:
+load data local inpath '/home/hduser/LFS/datasets/file1.txt' into table mgd_emp;
+copy & paste
+Hadoop to Hive:
+hdfs dfs -put -f file1.txt '/user/hduser/HFS/datasets/Input/'
+load data inpath '/user/hduser/HFS/datasets/Input/file1.txt' into table ext_emp;
+cut & paste
+
+Schema on Write ==> RDBMS ==> Oracle
+Create a table ==> Columns with Constraints ==> 
+id(pk) 	name 	city
+	arif	pune
+
+Schema on Read:
+Read data from that file then it was giving and error.
+
+id	name 	city
+	arif	pune
+102	mayank	
+103	areeba	hyd
+***************************************************************************************************************
+Partitions:
+1) Static: When the partition column values are fixed.
+a) Where the client is sending different files.
+
+create table partition_emp_static
+(
+id int,
+name string,
+sal int
+)
+partitioned by (country string)
+row format delimited fields terminated by ','
+tblproperties("skip.header.line.count"="1");
+
+load data local inpath '/home/hduser/LFS/datasets/emp_ind.txt' into table partition_emp_static partition(country='IN');
+load data local inpath '/home/hduser/LFS/datasets/emp_us.txt' into table partition_emp_static partition(country='UK');
+load data local inpath '/home/hduser/LFS/datasets/emp_uk.txt' into table partition_emp_static partition(country='US');
+
+a) Where the client is sending entire data in a file.
+create table partition_emp_static_all
+(
+id int,
+name string,
+sal int
+)
+partitioned by (country string)
+row format delimited fields terminated by ','
+tblproperties("skip.header.line.count"="1");
+
+load data local inpath '/home/hduser/LFS/datasets/emp_partition_all.txt' into table partition_emp_static_all partition (country='IN');
+
+Issue: Entire data is sitting in one partition.
+
+Solution:
+1) We create a temp/stg/intermediatry table.
+2) First we load the data into tmp/stg
+3) Then from tmp/stg table we load the data into partitioned table.
+
+create table partition_stg_emp_static_all
+(
+id int,
+name string,
+sal int,
+country string
+)
+row format delimited fields terminated by ','
+tblproperties("skip.header.line.count"="1");
+
+load data local inpath '/home/hduser/LFS/datasets/emp_partition_all.txt' into table partition_stg_emp_static_all; 
+
+insert into table partition_emp_static_all partition (country='IN') select id,name,sal from partition_stg_emp_static_all where country='IN';
+
+Issue: Why 1 Row is getting loaded.
+
+Solution: Bcoz partition table had a property to skip 1 row.
+
+create table partition_emp_static_all_1
+(
+id int,
+name string,
+sal int
+)
+partitioned by (country string)
+row format delimited fields terminated by ',';
+
+insert into table partition_emp_static_all_1 partition (country='IN') select id,name,sal from partition_stg_emp_static_all where country='IN';
+insert into table partition_emp_static_all_1 partition (country='UK') select id,name,sal from partition_stg_emp_static_all where country='UK';
+insert into table partition_emp_static_all_1 partition (country='US') select id,name,sal from partition_stg_emp_static_all where country='US';
+
+2) Dynamic: Partition Column values keeps changing
+
+a) We create a temp/stg/intermediatry table.
+b) We load the data into tmp/stg
+c) Create Dynamic Partitioned Table
+d) Then from tmp/stg table we load the data into partitioned table.
+
+create table partition_stg_emp_static_all
+(
+id int,
+name string,
+sal int,
+country string
+)
+row format delimited fields terminated by ','
+tblproperties("skip.header.line.count"="1");
+
+load data local inpath '/home/hduser/LFS/datasets/emp_partition_all.txt' into table partition_stg_emp_static_all; 
+
+create table partition_emp_dynamic
+(
+id int,
+name string,
+sal int
+)
+partitioned by (country string)
+row format delimited fields terminated by ',';
+
+insert into table partition_emp_dynamic partition (country) select id,name,sal,country from partition_stg_emp_static_all;
+
+Error: FAILED: SemanticException [Error 10096]: Dynamic partition strict mode requires at least one static partition column. To turn this off set hive.exec.dynamic.partition.mode=nonstrict
+
+set hive.exec.dynamic.partition.mode=nonstrict;
+
+insert into table partition_emp_dynamic partition (country) select id,name,sal,country from partition_stg_emp_static_all;
+
+
+
+
+
+
