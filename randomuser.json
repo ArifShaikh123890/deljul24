@@ -1,0 +1,40 @@
+{
+    "results": [
+        {
+            "user": {
+                "gender": "male",
+                "name": {
+                    "title": "mr",
+                    "first": "terrance",
+                    "last": "wheeler"
+                },
+                "location": {
+                    "street": "3692 timber wolf trail",
+                    "city": "pittsburgh",
+                    "state": "california",
+                    "zip": 25559
+                },
+                "email": "terrance.wheeler@example.com",
+                "username": "purplefrog560",
+                "password": "minerva",
+                "salt": "zFjSAPDH",
+                "md5": "163cefcde7a5bcd4dd6cb2cd52d00b5e",
+                "sha1": "a563d5fa3635dd5b27f3e59820ac70d902712283",
+                "sha256": "751c988fe2a8ea9723b8d979f7301d255d0e30d3a7ed4b41517779fbbf1ff807",
+                "registered": 1073445793,
+                "dob": 1298464893,
+                "phone": "(496)-037-4241",
+                "cell": "(989)-749-6244",
+                "SSN": "495-28-8321",
+                "picture": {
+                    "large": "https://randomuser.me/api/portraits/men/86.jpg",
+                    "medium": "https://randomuser.me/api/portraits/med/men/86.jpg",
+                    "thumbnail": "https://randomuser.me/api/portraits/thumb/men/86.jpg"
+                }
+            }
+        }
+    ],
+    "nationality": "US",
+    "seed": "643bda3d78a656950d",
+    "version": "0.8"
+}
