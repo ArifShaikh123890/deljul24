@@ -1,0 +1,51 @@
+Order_ID,Order_Date,Ship_Date,Customer_ID,Customer_Name,State,Product_ID,Product_Name,Category,Quantity,Sales,Ship_ID,Ship_Mode
+O0001,2011-01-06,2011-01-09,C001,Amit Sharma,Maharashtra,P001,Laptop,Electronics,2,1150,S002,Road
+O0002,2011-01-07,2011-01-11,C002,Priya Patel,Gujarat,P002,Smartphone,Electronics,3,2400,S003,Express
+O0025,2011-01-15,2011-01-27,C011,Suresh Kumar,Tamil Nadu,P002,Smartphone,Electronics,3,3872.37,S002,Express
+O0037,2011-02-05,2011-02-09,C007,Rohan Mehta,Maharashtra,P005,Printer,Office Supplies,5,19872.81,S003,Air
+O0003,2011-02-08,2011-02-13,C001,Amit Sharma,Maharashtra,P003,Office Chair,Furniture,4,4100,S004,Air
+O0004,2011-02-09,2011-02-15,C002,Priya Patel,Gujarat,P004,Study Table,Furniture,5,6250,S005,Road
+O0040,2011-02-18,2011-03-03,C009,Vikram Rao,Telangana,P008,Backpack,Accessories,1,3909.69,S002,Express
+O0030,2011-02-21,2011-02-27,C002,Priya Patel,Gujarat,P007,Notebook Pack,Office Supplies,3,8447.51,S001,Express
+O0043,2011-03-01,2011-03-06,C011,Suresh Kumar,Tamil Nadu,P006,Headphones,Electronics,4,3688.68,S001,Express
+O0005,2011-03-10,2011-03-17,C001,Amit Sharma,Maharashtra,P005,Printer,Office Supplies,1,1475,S001,Express
+O0006,2011-03-11,2011-03-19,C002,Priya Patel,Gujarat,P006,Headphones,Electronics,2,3400,S002,Air
+O0045,2011-03-22,2011-03-28,C005,Arjun Singh,Punjab,P004,Study Table,Furniture,2,5084.72,S005,Air
+O0007,2011-04-12,2011-04-21,C001,Amit Sharma,Maharashtra,P007,Notebook Pack,Office Supplies,3,5775,S003,Road
+O0008,2011-04-13,2011-04-15,C002,Priya Patel,Gujarat,P008,Backpack,Accessories,4,8600,S004,Express
+O0034,2011-04-20,2011-05-01,C006,Neha Gupta,Uttar Pradesh,P006,Headphones,Electronics,3,9698.21,S001,Express
+O0009,2011-05-14,2011-05-17,C001,Amit Sharma,Maharashtra,P001,Laptop,Electronics,5,1750,S005,Air
+O0010,2011-05-15,2011-05-19,C002,Priya Patel,Gujarat,P002,Smartphone,Electronics,1,575,S001,Road
+O0029,2011-05-25,2011-05-28,C007,Rohan Mehta,Maharashtra,P006,Headphones,Electronics,2,8636.31,S003,Air
+O0011,2011-06-16,2011-06-21,C001,Amit Sharma,Maharashtra,P003,Office Chair,Furniture,2,1600,S002,Express
+O0012,2011-06-17,2011-06-23,C002,Priya Patel,Gujarat,P004,Study Table,Furniture,3,3075,S003,Air
+O0031,2011-07-15,2011-07-17,C008,Kavya Nair,Kerala,P002,Smartphone,Electronics,5,7480.04,S005,Road
+O0033,2011-07-16,2011-07-21,C004,Sneha Iyer,Karnataka,P002,Smartphone,Electronics,4,11806.64,S003,Air
+O0013,2011-07-18,2011-07-25,C001,Amit Sharma,Maharashtra,P005,Printer,Office Supplies,4,5000,S004,Road
+O0014,2011-07-19,2011-07-27,C002,Priya Patel,Gujarat,P006,Headphones,Electronics,5,7375,S005,Express
+O0038,2011-07-24,2011-08-21,C011,Suresh Kumar,Tamil Nadu,P008,Backpack,Accessories,6,13200.72,S003,Air
+O0050,2011-08-15,2011-08-30,C011,Suresh Kumar,Tamil Nadu,P006,Headphones,Electronics,5,10844.08,S002,Air
+O0015,2011-08-20,2011-08-29,C001,Amit Sharma,Maharashtra,P007,Notebook Pack,Office Supplies,1,1700,S001,Air
+O0016,2011-08-21,2011-08-23,C002,Priya Patel,Gujarat,P008,Backpack,Accessories,2,3850,S002,Road
+O0046,2011-09-10,2011-09-11,C010,Ananya Das,West Bengal,P006,Headphones,Electronics,1,4198.67,S003,Air
+O0044,2011-09-16,2011-09-29,C012,Pooja Joshi,Rajasthan,P005,Printer,Office Supplies,2,4815.29,S001,Express
+O0017,2011-09-22,2011-09-25,C001,Amit Sharma,Maharashtra,P001,Laptop,Electronics,3,6450,S003,Express
+O0018,2011-09-23,2011-09-27,C002,Priya Patel,Gujarat,P002,Smartphone,Electronics,4,1400,S004,Air
+O0035,2011-10-03,2011-10-15,C011,Suresh Kumar,Tamil Nadu,P003,Office Chair,Furniture,2,1888.92,S004,Road
+O0020,2011-10-05,2011-10-11,C002,Priya Patel,Gujarat,P004,Study Table,Furniture,1,800,S001,Express
+O0049,2011-10-06,2011-10-19,C007,Rohan Mehta,Maharashtra,P004,Study Table,Furniture,6,19091.62,S003,Road
+O0027,2011-10-17,2011-10-21,C009,Vikram Rao,Telangana,P001,Laptop,Electronics,6,18072.05,S005,Road
+O0047,2011-10-20,2011-10-22,C001,Amit Sharma,Maharashtra,P004,Study Table,Furniture,1,3360.61,S001,Express
+O0019,2011-10-24,2011-10-29,C001,Amit Sharma,Maharashtra,P003,Office Chair,Furniture,5,2875,S005,Road
+O0039,2011-10-29,2011-11-05,C004,Sneha Iyer,Karnataka,P005,Printer,Office Supplies,5,9737.26,S002,Air
+O0028,2011-10-31,2011-11-05,C004,Sneha Iyer,Karnataka,P008,Backpack,Accessories,1,3474.93,S002,Express
+O0026,2011-11-01,2011-11-08,C002,Priya Patel,Gujarat,P002,Smartphone,Electronics,1,376.64,S002,Air
+O0041,2011-11-04,2011-11-06,C003,Rahul Verma,Delhi,P007,Notebook Pack,Office Supplies,4,7487.53,S004,Express
+O0021,2011-11-06,2011-11-13,C001,Amit Sharma,Maharashtra,P005,Printer,Office Supplies,2,2050,S002,Air
+O0022,2011-11-07,2011-11-15,C002,Priya Patel,Gujarat,P006,Headphones,Electronics,3,3750,S003,Road
+O0048,2011-12-06,2011-12-14,C003,Rahul Verma,Delhi,P003,Office Chair,Furniture,5,4758.95,S005,Express
+O0023,2011-12-08,2011-12-17,C001,Amit Sharma,Maharashtra,P007,Notebook Pack,Office Supplies,4,5900,S004,Express
+O0024,2011-12-09,2011-12-11,C002,Priya Patel,Gujarat,P008,Backpack,Accessories,5,8500,S005,Air
+O0042,2011-12-17,2011-12-29,C005,Arjun Singh,Punjab,P001,Laptop,Electronics,1,3147.27,S005,Road
+O0036,2011-12-19,2011-12-25,C011,Suresh Kumar,Tamil Nadu,P004,Study Table,Furniture,1,1223.45,S001,Road
+O0032,2011-12-29,2011-12-31,C010,Ananya Das,West Bengal,P004,Study Table,Furniture,1,3060.37,S003,Air
